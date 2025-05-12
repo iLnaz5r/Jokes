@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Joke</title>
+  <style>
+    body {
+      background-color: peachpuff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .btn {
+      cursor: pointer;
+      width: 100px;
+      height: 100px;
+      border: none;
+      border-radius: 50px;
+      background-color: white;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background-color: rgb(242, 189, 142);
+      color: white;
+      box-shadow: -4px -3px 35px white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="display: flex; flex-direction: column;justify-content: space-between;align-items: center;">
+    <h1>Want to hear a joke?</h1>
+    <div id="output"></div>
+    <button class="btn" onclick="getJoke()">Tap it</button>
+  </div>
+
+  <script>
+    function getJoke() {
+      fetch('https://official-joke-api.appspot.com/random_joke')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('output').innerHTML = `
+            <p><strong>${data.setup}</strong></p>
+            <p>${data.punchline}</p>
+          `;
+        })
+        .catch(error => {
+          document.getElementById('output').innerText = 'Oops! No joke today.';
+          console.error(error);
+        });
+    }
+  </script>
+</body>
+</html>
