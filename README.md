@@ -1,3 +1,5 @@
+https://ilnaz5r.github.io/Jokes/
+
 Here’s a clean and beginner-friendly README.md file for your Random Joke Generator project:
 
 😂 Random Joke Generator
